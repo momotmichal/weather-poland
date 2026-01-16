@@ -1,0 +1,50 @@
+from config import Config
+import requests
+
+URL = f"https://api.openweathermap.org/data/2.5/weather?q={Config.OPENWEATHER_CITY}&appid={Config.OPENWEATHER_API_KEY}"
+
+response = requests.get(URL)
+print(response)
+
+def fetch_weather():
+    try:
+        response = requests.get(URL)
+        data = response.json()
+        print(data)
+
+    except Exception as e:
+        print(e)
+fetch_weather()
+
+
+
+from config import Config
+import requests
+from datetime import datetime
+
+URL= f"https://api.openweathermap.org/data/2.5/weather?q={Config.OPENWEATHER_CITY}&appid={Config.OPENWEATHER_API_KEY}"
+
+def fetch_weather():
+    try:
+        response = requests.get(URL)
+        data = response.json()
+
+        weather_dict = {
+            "miasto": data.get("name"),
+            "temperatura": data.get("main").get("temp"),
+            "odczuwalna_temperatura": data.get("main").get("feels_like"),
+            "wilgotnosc": data.get("main").get("humidity"),
+            "cisnienie": data.get("main").get("pressure"),
+            "wiatr": {
+                "predkosc": data.get("wind").get("speed"),
+                "kierunek": data.get("wind").get("deg")
+            },
+            "data_pomiaru": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        }
+
+        print(weather_dict)
+
+    except Exception as e:
+        print(e)
+
+fetch_weather()
