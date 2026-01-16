@@ -1,0 +1,9 @@
+.vene
+/venv
+venv
+
+.idea
+/idea
+idea
+
+.env
