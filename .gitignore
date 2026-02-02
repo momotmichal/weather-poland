@@ -1,4 +1,4 @@
-.vene
+.venv
 /venv
 venv
 
@@ -6,7 +6,10 @@ venv
 /idea
 idea
 
-.env
-
 /examples
 examples
+
+.env
+
+__pycache__
+__pycache__/

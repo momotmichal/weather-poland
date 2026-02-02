@@ -23,3 +23,4 @@ def read_excel_file(path):
         file = pd.read_excel(path)
         return file
     except Exception as e:
+        print(e)
